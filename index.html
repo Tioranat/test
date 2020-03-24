@@ -11,12 +11,53 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<div class="container">
+    <!-- Content here -->
+    <h1>Symptom Test</h1>
+    <p>Hier wird die Umfrage in <a href="https://github.com/Tioranat/tioranat.info/tree/master/rki">
+        https://github.com/Tioranat/tioranat.info/tree/master/rki <code>survey.json</code>
+    </a> dargestellt.
+    </p>
+    <div id="checktab"></div>
+
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    var DB;
+    $(function(){
+        DB = (function () {
+            var json = null;
+            $.ajax({
+                'async': false,
+                'global': false,
+                'url': "https://raw.githubusercontent.com/Tioranat/tioranat.info/master/rki/survey.json",
+                'dataType': "json",
+                'success': function (data) {
+                    json = data;
+                }
+            });
+            return json;
+        })();
+        var Survey;
+        for(var k=0;k < DB["survey"].length;k++){
+            if(DB["survey"][k]["name"] == "QuestionSymptoms"){
+                Survey = DB["survey"][k]["answers"];
+            }
+        }
+        var HTML = '<table class="table table-border"><tr><th>Key</th><th>Importance</th><th>Target level [0-5]</th></tr>'
+        for(var k=0;k < Survey.length;k++){
+            HTML += "<tr><td>" + Survey[k]["answer"] + "</td>";
+            HTML += "<td>" + Survey[k]["weight"] + "</td>";
+            HTML += "<td>" + Survey[k]["target"] + "</td></tr>";
+        }
+        HTML += "</table>";
+        $("#checktab").html(HTML);
+    })
+</script>
 </body>
 </html>
