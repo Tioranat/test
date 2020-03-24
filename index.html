@@ -6,58 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+
+    <title>Tioranat</title>
+    <link rel="icon" type="image/png" href="https:://www.tioranat.info/assets/favicon-32x32.png" sizes="32x32">
 </head>
 <body>
 <div class="container">
     <!-- Content here -->
-    <h1>Symptom Test</h1>
-    <p>Hier wird die Umfrage in <a href="https://github.com/Tioranat/tioranat.info/tree/master/rki">
-        https://github.com/Tioranat/tioranat.info/tree/master/rki <code>survey.json</code>
-    </a> dargestellt.
-    </p>
-    <div id="checktab"></div>
+    <div class="jumbotron">
+        <h1 class="display-4">Umfrage Check</h1>
+        <p class="lead">Die Logik der Befragung wird hier direkt aus dem master vom Github Repository gelesen.
+            Dadurch kann es auch von JavaScript Laien gelesen werden.<br>
+            Weitere Details auf <a href="https://github.com/Tioranat/tioranat.info/tree/master/rki">
+                https://github.com/Tioranat/tioranat.info/tree/master/rki
+            </a> <code>survey.json</code>.
+        </p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="https://github.com/Tioranat/tioranat.info"
+        ">TIORANAT @ GitHub</a>
+        <p>
+        </p>
 
+    </div>
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-sym-tab" data-toggle="tab" href="#nav-sym" role="tab">Symptome</a>
+            <a class="nav-item nav-link" id="nav-radio-tab" data-toggle="tab" href="#nav-radio" role="tab">Radio</a>
+            <a class="nav-item nav-link" id="nav-checkbox-tab" data-toggle="tab" href="#nav-checkbox" role="tab">Checkbox</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane show active" id="nav-sym" role="tabpanel">
+            1
+        </div>
+        <div class="tab-pane" id="nav-radio" role="tabpanel">
+            2
+        </div>
+        <div class="tab-pane" id="nav-checkbox" role="tabpanel">
+            3
+        </div>
+    </div>
 </div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script>
-    var DB;
-    $(function(){
-        DB = (function () {
-            var json = null;
-            $.ajax({
-                'async': false,
-                'global': false,
-                'url': "https://raw.githubusercontent.com/Tioranat/tioranat.info/master/rki/survey.json",
-                'dataType': "json",
-                'success': function (data) {
-                    json = data;
-                }
-            });
-            return json;
-        })();
-        var Survey;
-        for(var k=0;k < DB["survey"].length;k++){
-            if(DB["survey"][k]["name"] == "QuestionSymptoms"){
-                Survey = DB["survey"][k]["answers"];
-            }
-        }
-        var HTML = '<table class="table table-border"><tr><th>Key</th><th>Importance</th><th>Target level [0-5]</th></tr>'
-        for(var k=0;k < Survey.length;k++){
-            HTML += "<tr><td>" + Survey[k]["answer"] + "</td>";
-            HTML += "<td>" + Survey[k]["weight"] + "</td>";
-            HTML += "<td>" + Survey[k]["target"] + "</td></tr>";
-        }
-        HTML += "</table>";
-        $("#checktab").html(HTML);
-    })
-</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="/index.js"></script>
 </body>
 </html>
