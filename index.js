@@ -3,7 +3,7 @@ $(function () {
     loadHashReplace();
     loadDB(function (Data) {
         DB = Data;
-        loadSymptoms();
+        //loadSymptoms();
         loadRadio();
         loadCheckbox();
     });
