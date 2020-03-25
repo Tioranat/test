@@ -20,7 +20,6 @@ function loadCheckbox(){
     for (var k = 0; k < DB["survey"].length; k++) {
         if (DB["survey"][k]["type"] == "radiocheck") {
             Survey = DB["survey"][k];
-            Answers = Survey["answers"];
             NewTab.addRow([Survey["group"],Survey["name"],Survey["weight"]])
         }
     }
@@ -35,12 +34,13 @@ function loadRadio() {
     var Survey;
     var Abswers;
     var k;
-    for (var k = 0; k < DB["survey"].length; k++) {
+    var l;
+    for (k = 0; k < DB["survey"].length; k++) {
         if (DB["survey"][k]["type"] == "radio") {
             Survey = DB["survey"][k];
             Answers = Survey["answers"];
-            for (k = 0; k < Answers.length; k++) {
-                NewTab.addRow([Survey["group"],Survey["name"], Answers[k]["answer"], Answers[k]["weight"]])
+            for (l = 0; l < Answers.length; l++) {
+                NewTab.addRow([Survey["group"],Survey["name"], Answers[l]["answer"], Answers[l]["weight"]])
             }
         }
     }
