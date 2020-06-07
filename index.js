@@ -82,7 +82,7 @@ function Table() {
 function loadDB(nextFunction) {
     var URL;
     if(location.hostname === "tioranat.github.io"){
-        URL = "https://raw.githubusercontent.com/Tioranat/tioranat.info/master/rki/survey.json";
+        URL = "https://raw.githubusercontent.com/Tioranat/tioranat.info/master/survey.json";
     }else{
         URL = "/survey.json";
     }
