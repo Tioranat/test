@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="/jsuites.css">
+    <link rel="stylesheet" href="/jexcel.css">
+
 
     <title>Tioranat</title>
     <link rel="icon" type="image/png" href="/favicon.ico" sizes="32x32">
@@ -22,33 +25,13 @@
             Hier wird die Fragebogen Logik als Tabelle angezeigt. Datenbasis
             ist <code>survey.json</code> auf
             <a href="https://github.com/Tioranat/tioranat.info/tree/master/rki">
-                github.com/Tioranat/tioranat.info/tree/master
+                github.com/Tioranat/tioranat.info/tree/master/rki
             </a>.
         </p>
-        <hr class="my-4">
-        <a class="btn btn-primary btn-lg" href="https://github.com/Tioranat/tioranat.info">
-            TIORANAT @ GitHub
-        </a>
-        <a class="btn btn-primary btn-lg" href="https://www.tioranat.info/DE">
-            TIORANAT Fallzahlen CORONA / COVID-19
-        </a>
     </div>
 
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-infection-tab" data-toggle="tab" href="#nav-infection"
-               role="tab">InfectionRisk</a>
-            <a class="nav-item nav-link" id="nav-group-tab" data-toggle="tab" href="#nav-group" role="tab">RiskGroup</a>
-        </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane show active" id="nav-infection" role="tabpanel">
-            loading ...
-        </div>
-        <div class="tab-pane" id="nav-group" role="tabpanel">
-            loading ...
-        </div>
-    </div>
+    <div id="spreadsheet"></div>
+
 </div>
 
 <!-- Optional JavaScript -->
@@ -60,6 +43,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-<script src="/index.js"></script>
+<script src="/jsuites.js"></script>
+<script src="/jexcel.js"></script>
+<script src="/translate.js"></script>
 </body>
 </html>
